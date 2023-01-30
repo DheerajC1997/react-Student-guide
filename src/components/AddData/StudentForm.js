@@ -102,7 +102,12 @@ function StudentForm(props) {
       <div className="new-student__controls">
         <div className="new-student__control">
           <label>Name</label>
-          <input type="text" value={name} onChange={newSetName}></input>
+          <input
+            type="text"
+            value={name}
+            pattern="[a-zA-Z\s]*"
+            onChange={newSetName}
+          ></input>
         </div>
         <div className="new-student__control">
           <label>Date</label>
