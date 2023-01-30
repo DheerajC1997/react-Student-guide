@@ -1,6 +1,6 @@
 import "./StudentForm.css";
 import StudentGender from "./Form/StudentGender";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import StudentDivision from "./Form/StudentDivision";
 import StudentClasses from "./Form/StudentClasses";
 
@@ -81,17 +81,23 @@ function StudentForm(props) {
           division: division,
           gender: gender,
         }),
-      });
+      })
+        .then((data) => data.text())
+        .then((data) => {
+          errorFunction(data);
+
+          if (data === "Sucess") {
+            setNewName("");
+            setNewDate("");
+            setNewGender("");
+            setClasses("");
+            setDivision("");
+            props.addStudent(studentData);
+          }
+        });
 
       //add value to parent ,not necassary
-      props.addStudent(studentData);
       // commant to send value to parent
-      setNewName("");
-      setNewDate("");
-      setNewGender("");
-      setClasses("");
-      setDivision("");
-      errorFunction("Updated the values");
     } else {
       errorFunction(errorM);
     }

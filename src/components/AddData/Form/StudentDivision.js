@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 function StudentDivision(props) {
-  const [division, setDivision] = useState("A");
+  const [division, setDivision] = useState("");
 
   const assignDivision = (event) => {
     setDivision(event.target.value);
@@ -14,6 +14,7 @@ function StudentDivision(props) {
       <div>
         <label>Division</label>
         <select value={division} onChange={assignDivision}>
+          <option value="">select</option>
           <option value="A">A</option>
           <option value="B">B</option>
           <option value="C">C</option>

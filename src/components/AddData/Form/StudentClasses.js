@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 function StudentClasses(props) {
-  const [classes, setClasses] = useState("I");
-  props.newClasses("I");
+  const [classes, setClasses] = useState("");
   const assignClasses = (event) => {
     setClasses(event.target.value);
     props.newClasses(event.target.value);
@@ -12,8 +11,9 @@ function StudentClasses(props) {
   return (
     <div>
       <div>
-        <label>Division</label>
-        <select value={classes} defaultValue="I" onChange={assignClasses}>
+        <label>Class</label>
+        <select value={classes} defaultValue="" onChange={assignClasses}>
+          <option value="">select</option>
           <option value="I">I</option>
           <option value="II">II</option>
           <option value="III">III</option>

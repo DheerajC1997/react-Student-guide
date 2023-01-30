@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 function StudentGender(props) {
-  const [Gender, setGender] = useState("Male");
+  const [Gender, setGender] = useState("");
   const assignGender = (event) => {
     setGender(event.target.value);
     props.newGender(event.target.value);
