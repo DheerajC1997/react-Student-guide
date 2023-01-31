@@ -6,17 +6,18 @@ import StudentClasses from "./Form/StudentClasses";
 
 function StudentForm(props) {
   // use states
-  const [id, setNewid] = useState(null);
-  const [name, setNewName] = useState("");
-  const [date, setNewDate] = useState("");
-  const [gender, setNewGender] = useState("");
-  const [division, setDivision] = useState("");
-  const [classes, setClasses] = useState("");
+
+  const [id, setNewid] = useState(props.studentData.id);
+  const [name, setNewName] = useState(props.studentData.name);
+  const [date, setNewDate] = useState(props.studentData.date);
+  const [gender, setNewGender] = useState(props.studentData.gender);
+  const [division, setDivision] = useState(props.studentData.division);
+  const [classes, setClasses] = useState(props.studentData.classes);
   const [errorMessage, errorFunction] = useState("");
-  const [studentDatas, setStudentDatas] = useState([]);
+
   // use state function
   const newSetName = (event) => {
-    setNewName(event.target.value);
+    setNewName(event.target.value.trim());
   };
   const newSetDate = (event) => {
     setNewDate(event.target.value);
@@ -76,7 +77,7 @@ function StudentForm(props) {
         method: "POST",
         headers: new Headers({ "content-type": "application/json" }),
         body: JSON.stringify({
-          id: id,
+          id: props.studentData.id,
           name: name,
           date: new Date(date),
           classes: classes,
@@ -88,7 +89,7 @@ function StudentForm(props) {
         .then((data) => {
           errorFunction(data);
 
-          if (data === "Sucess") {
+          if (data === "Sucess" || data === "Updated") {
             setNewName("");
             setNewDate("");
             // setNewGender("");
@@ -104,28 +105,16 @@ function StudentForm(props) {
       errorFunction(errorM);
     }
   };
-  const deleteData = () => {
+  const clearData = () => {
     setNewName("");
     setNewDate("");
   };
-
-  console.log(id);
-  //setNewid(props.studentData2.id);
-
-  //console.log(props.studentData2);
-  // setNewid(props.studentData2.id);
-  // setNewDate(props.studentData2.Date);
-  // setNewGender(props.studentData2.gender);
-  // setNewName(props.studentData2.name);
-  //setDivision(props.studentData2.division);
-  //setClasses(props.studentData2.classes);
 
   return (
     <form onSubmit={submitHandler}>
       <div className="new-student__controls">
         <div>
-          {" "}
-          <input type="hidden" value={id} />
+          <input type="hidden" defaultValue={props.studentData.id} />
         </div>
         <div className="new-student__control">
           <label>Name</label>
@@ -146,16 +135,25 @@ function StudentForm(props) {
             onChange={newSetDate}
           ></input>
         </div>
-        <StudentClasses newClasses={newSetClasses}></StudentClasses>
-        <StudentDivision newDivision={newSetDivision}></StudentDivision>
-        <StudentGender newGender={newSetGender}></StudentGender>
+        <StudentClasses
+          newClasses={newSetClasses}
+          defaultClasses={props.studentData.classes}
+        ></StudentClasses>
+        <StudentDivision
+          newDivision={newSetDivision}
+          defaultDivision={props.studentData.division}
+        ></StudentDivision>
+        <StudentGender
+          newGender={newSetGender}
+          defaultGender={props.studentData.gender}
+        ></StudentGender>
       </div>
 
       <div className="new-student__actions ">
-        <button type="button" onClick={deleteData}>
+        <button type="button" onClick={clearData}>
           Cancel
         </button>
-        <button type="submit">Add expense</button>
+        <button type="submit">Save</button>
       </div>
       <div>{errorMessage}</div>
     </form>

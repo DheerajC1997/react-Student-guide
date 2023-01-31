@@ -13,7 +13,7 @@ function Newstudent(props) {
     <div className="new-student">
       <StudentForm
         addStudent={addStudentdetails}
-        studentData2={props.studentData}
+        studentData={props.studentData}
       ></StudentForm>
     </div>
   );

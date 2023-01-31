@@ -7,7 +7,7 @@ function TableBody(props) {
   const [updateStudent, setUpdateStudent] = useState([]);
 
   const deleteList = () => {
-    fetch("http://localhost:8080/delete/" + props.id, {
+    fetch("http://localhost:8080/delete/" + props.studentData.id, {
       method: "DELETE",
       headers: new Headers({ "content-type": "application/json" }),
     })
@@ -21,19 +21,21 @@ function TableBody(props) {
     deleteList();
   };
   const updatefunction = () => {
-    props.updateDetails5(props);
+    props.updateDetails5(props.studentData);
   };
 
   return (
     <tr>
-      <td className="tablebody ">{props.name}</td>
-      <StudentDate date={props.date}></StudentDate>
+      <td className="tablebody ">{props.studentData.name}</td>
+      <StudentDate date={props.studentData.date}></StudentDate>
 
-      <td className="tablebody ">{props.classes}</td>
-      <td className="tablebody ">{props.division}</td>
-      <td className="tablebody ">{props.gender}</td>
-      <button onClick={deleteFunction}>Delete</button>
-      <button onClick={updatefunction}>Update</button>
+      <td className="tablebody ">{props.studentData.classes}</td>
+      <td className="tablebody ">{props.studentData.division}</td>
+      <td className="tablebody ">{props.studentData.gender}</td>
+      <td>
+        <button onClick={deleteFunction}>Delete</button>
+        <button onClick={updatefunction}>Update</button>
+      </td>
     </tr>
   );
 }

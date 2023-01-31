@@ -5,8 +5,15 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [DBStudents, DBaddNewStudents] = useState([]);
-  const [updateStudent, setUpdateStudent] = useState([]);
-  const [studentUpdate, setStudentUpdate] = useState([]);
+  const [updateStudent, setUpdateStudent] = useState({});
+  const [studentData, setStudentUpdate] = useState({
+    id: null,
+    name: "",
+    date: "",
+    gender: "",
+    classes: "",
+    division: "",
+  });
 
   const reloadList = () => {
     fetch("http://localhost:8080/getStudents", {
@@ -16,7 +23,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         let temp = [...data];
-        temp.map((x) => (x.date = new Date(2019, 5, 12)));
+        // temp.map((x) => (x.date = Date.parse(x.date)));
         //console.log("response");
         //console.log(...temp);
 
@@ -50,10 +57,7 @@ function App() {
     <div className="App">
       <h2>heading</h2>
       <div className="float-left">
-        <Newstudent
-          addStudentDetails={addStudent}
-          studentData={studentUpdate}
-        />
+        <Newstudent addStudentDetails={addStudent} studentData={studentData} />
       </div>
       <div className="float-right">
         <StudentDetails
