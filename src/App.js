@@ -32,8 +32,15 @@ function App() {
       .catch((error) => console.log(error));
   };
 
-  const addStudent = (values) => {
-    console.log(values);
+  const addStudent = () => {
+    setStudentUpdate({
+      id: null,
+      name: "",
+      date: "",
+      gender: "",
+      classes: "",
+      division: "",
+    });
     reloadList();
   };
   const deleteDetails = () => {
@@ -57,7 +64,7 @@ function App() {
     <div className="App">
       <h2>heading</h2>
       <div className="float-left">
-        <Newstudent addStudentDetails={addStudent} studentData={studentData} />
+        <Newstudent reloadList={reloadList} studentData={studentData} />
       </div>
       <div className="float-right">
         <StudentDetails

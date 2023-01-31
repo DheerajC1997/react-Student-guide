@@ -3,16 +3,15 @@ import StudentForm from "./StudentForm";
 import { useState } from "react";
 
 function Newstudent(props) {
-  const addStudentdetails = (values) => {
-    const newValues = values;
-    props.addStudentDetails(newValues);
+  const reloadList = () => {
+    props.reloadList();
     //console.log(newValues);
   };
   //console.log(props.studentData);
   return (
     <div className="new-student">
       <StudentForm
-        addStudent={addStudentdetails}
+        reloadList={reloadList}
         studentData={props.studentData}
       ></StudentForm>
     </div>

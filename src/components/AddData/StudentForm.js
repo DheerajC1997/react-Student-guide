@@ -95,7 +95,7 @@ function StudentForm(props) {
             // setNewGender("");
             //setClasses("");
             // setDivision("");
-            props.addStudent(studentData);
+            props.reloadList();
           }
         });
 
@@ -108,6 +108,7 @@ function StudentForm(props) {
   const clearData = () => {
     setNewName("");
     setNewDate("");
+    props.reloadList();
   };
 
   return (
