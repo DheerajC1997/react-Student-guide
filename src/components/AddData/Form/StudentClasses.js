@@ -12,7 +12,7 @@ function StudentClasses(props) {
     <div>
       <div>
         <label>Class</label>
-        <select value={classes} defaultValue="" onChange={assignClasses}>
+        <select value={classes} onChange={assignClasses}>
           <option value="">select</option>
           <option value="I">I</option>
           <option value="II">II</option>

@@ -6,12 +6,14 @@ import StudentClasses from "./Form/StudentClasses";
 
 function StudentForm(props) {
   // use states
+  const [id, setNewid] = useState(null);
   const [name, setNewName] = useState("");
   const [date, setNewDate] = useState("");
   const [gender, setNewGender] = useState("");
   const [division, setDivision] = useState("");
   const [classes, setClasses] = useState("");
   const [errorMessage, errorFunction] = useState("");
+  const [studentDatas, setStudentDatas] = useState([]);
   // use state function
   const newSetName = (event) => {
     setNewName(event.target.value);
@@ -32,7 +34,6 @@ function StudentForm(props) {
   const submitHandler = (event) => {
     event.preventDefault();
     const studentData = {
-      id: Math.random().toString(),
       name: name,
       date: new Date(date),
       gender: gender,
@@ -71,10 +72,11 @@ function StudentForm(props) {
     }
     if (!haserror) {
       //updating value to mysql
-      fetch("http://localhost:8080/addStudent", {
+      fetch("http://localhost:8080/addStudent/", {
         method: "POST",
         headers: new Headers({ "content-type": "application/json" }),
         body: JSON.stringify({
+          id: id,
           name: name,
           date: new Date(date),
           classes: classes,
@@ -89,9 +91,9 @@ function StudentForm(props) {
           if (data === "Sucess") {
             setNewName("");
             setNewDate("");
-            setNewGender("");
-            setClasses("");
-            setDivision("");
+            // setNewGender("");
+            //setClasses("");
+            // setDivision("");
             props.addStudent(studentData);
           }
         });
@@ -102,10 +104,29 @@ function StudentForm(props) {
       errorFunction(errorM);
     }
   };
+  const deleteData = () => {
+    setNewName("");
+    setNewDate("");
+  };
+
+  console.log(id);
+  //setNewid(props.studentData2.id);
+
+  //console.log(props.studentData2);
+  // setNewid(props.studentData2.id);
+  // setNewDate(props.studentData2.Date);
+  // setNewGender(props.studentData2.gender);
+  // setNewName(props.studentData2.name);
+  //setDivision(props.studentData2.division);
+  //setClasses(props.studentData2.classes);
 
   return (
     <form onSubmit={submitHandler}>
       <div className="new-student__controls">
+        <div>
+          {" "}
+          <input type="hidden" value={id} />
+        </div>
         <div className="new-student__control">
           <label>Name</label>
           <input
@@ -131,7 +152,9 @@ function StudentForm(props) {
       </div>
 
       <div className="new-student__actions ">
-        <button type="button">Cancel</button>
+        <button type="button" onClick={deleteData}>
+          Cancel
+        </button>
         <button type="submit">Add expense</button>
       </div>
       <div>{errorMessage}</div>

@@ -1,5 +1,6 @@
 import "./NewStudent.css";
 import StudentForm from "./StudentForm";
+import { useState } from "react";
 
 function Newstudent(props) {
   const addStudentdetails = (values) => {
@@ -7,10 +8,13 @@ function Newstudent(props) {
     props.addStudentDetails(newValues);
     //console.log(newValues);
   };
-
+  //console.log(props.studentData);
   return (
     <div className="new-student">
-      <StudentForm addStudent={addStudentdetails}></StudentForm>
+      <StudentForm
+        addStudent={addStudentdetails}
+        studentData2={props.studentData}
+      ></StudentForm>
     </div>
   );
 }

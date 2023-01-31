@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [DBStudents, DBaddNewStudents] = useState([]);
+  const [updateStudent, setUpdateStudent] = useState([]);
+  const [studentUpdate, setStudentUpdate] = useState([]);
 
   const reloadList = () => {
     fetch("http://localhost:8080/getStudents", {
@@ -24,22 +26,41 @@ function App() {
   };
 
   const addStudent = (values) => {
+    console.log(values);
     reloadList();
   };
-  //get function...............................................................................
+  const deleteDetails = () => {
+    reloadList();
+  };
 
   useEffect(() => {
     reloadList();
   }, []);
+  //update
+  const updateDetailes = (values) => {
+    //setUpdateStudent(values);
+    //studentUpdate = values;
+
+    setStudentUpdate(values);
+  };
+
+  // console.log(studentUpdate);
 
   return (
     <div className="App">
       <h2>heading</h2>
       <div className="float-left">
-        <Newstudent addStudentDetails={addStudent} />
+        <Newstudent
+          addStudentDetails={addStudent}
+          studentData={studentUpdate}
+        />
       </div>
       <div className="float-right">
-        <StudentDetails items={DBStudents} />
+        <StudentDetails
+          items={DBStudents}
+          deleteDetails1={deleteDetails}
+          updateDetailes1={updateDetailes}
+        />
       </div>
     </div>
   );
