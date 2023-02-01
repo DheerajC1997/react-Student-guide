@@ -1,9 +1,19 @@
 .tablehead {
-  border: 1px solid rgb(243, 239, 10);
+  font-style: italic;
+  border: 2px solid rgb(47, 13, 236);
+  border-collapse: collapse;
+  background-color: rgb(10, 243, 107);
 }
 .tablebody {
-  border: 1px solid rgb(223, 19, 19);
+  border: 2px solid rgb(47, 13, 236);
+  border-collapse: collapse;
+  background-color: darkgray;
 }
 .tables {
-  border: 1px solid rgb(14, 2, 2);
+  border: 2px solid rgb(47, 13, 236);
+  border-collapse: collapse;
+  text-align: left;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 12px;
 }

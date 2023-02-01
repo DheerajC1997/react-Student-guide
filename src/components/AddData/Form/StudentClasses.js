@@ -10,7 +10,7 @@ function StudentClasses(props) {
 
   return (
     <div>
-      <div>
+      <div className="new-student__control">
         <label>Class</label>
         <select value={classes} onChange={assignClasses}>
           <option value="">select</option>

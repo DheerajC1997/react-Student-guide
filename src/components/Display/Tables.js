@@ -9,7 +9,7 @@ function Tables(props) {
     props.deleteDetails3();
   };
   return (
-    <table>
+    <table className="tables ">
       <thead>
         <tr>
           <th className="tablehead ">Name</th>

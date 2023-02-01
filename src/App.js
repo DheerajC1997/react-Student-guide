@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>heading</h2>
+      <h2>Student Project</h2>
       <div className="float-left">
         <Newstudent reloadList={reloadList} studentData={studentData} />
       </div>

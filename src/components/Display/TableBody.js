@@ -32,7 +32,7 @@ function TableBody(props) {
       <td className="tablebody ">{props.studentData.classes}</td>
       <td className="tablebody ">{props.studentData.division}</td>
       <td className="tablebody ">{props.studentData.gender}</td>
-      <td>
+      <td className="tablebody ">
         <button onClick={deleteFunction}>Delete</button>
         <button onClick={updatefunction}>Update</button>
       </td>

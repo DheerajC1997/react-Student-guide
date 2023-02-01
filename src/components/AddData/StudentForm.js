@@ -48,27 +48,27 @@ function StudentForm(props) {
     // Checking error one by one instead of using "or"
     if (name.trim().length === 0) {
       haserror = true;
-      errorM = errorM + ". error in Name .";
+      errorM = errorM + " Error in Name ";
       //console.log("A1");
     }
     if (date.trim().length === 0) {
       haserror = true;
-      errorM = errorM + ". error in Date .";
+      errorM = errorM + " Error in Date ";
       //console.log("A2");
     }
     if (gender.trim().length === 0) {
       haserror = true;
-      errorM = errorM + ". error in Gender.";
+      errorM = errorM + " Error in Gender";
       //console.log("A3");
     }
     if (classes.trim().length === 0) {
       haserror = true;
-      errorM = errorM + ". error in Class .";
+      errorM = errorM + " Error in Class ";
       //console.log("A4");
     }
     if (division.trim().length === 0) {
       haserror = true;
-      errorM = errorM + ". error in Division .";
+      errorM = errorM + " Error in Division ";
       //console.log("A5");
     }
     if (!haserror) {

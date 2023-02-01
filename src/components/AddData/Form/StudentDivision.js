@@ -11,7 +11,7 @@ function StudentDivision(props) {
 
   return (
     <div>
-      <div>
+      <div className="new-student__control">
         <label>Division</label>
         <select value={division} onChange={assignDivision}>
           <option value="">select</option>
