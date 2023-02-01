@@ -114,10 +114,7 @@ function StudentForm(props) {
   return (
     <form onSubmit={submitHandler}>
       <div className="new-student__controls">
-        <div>
-          <input type="hidden" defaultValue={props.studentData.id} />
-        </div>
-        <div className="new-student__control">
+        <div style={{ width: "45%" }} className="new-student__control">
           <label>Name</label>
           <input
             type="text"
@@ -126,7 +123,7 @@ function StudentForm(props) {
             onChange={newSetName}
           ></input>
         </div>
-        <div className="new-student__control">
+        <div style={{ width: "45%" }} className="new-student__control">
           <label>Date</label>
           <input
             type="date"
@@ -148,14 +145,17 @@ function StudentForm(props) {
           newGender={newSetGender}
           defaultGender={props.studentData.gender}
         ></StudentGender>
+        <div
+          style={{ width: "45%", "padding-top": "50px" }}
+          className="new-student__actions "
+        >
+          <button type="button" onClick={clearData}>
+            Cancel
+          </button>
+          <button type="submit">Save</button>
+        </div>
       </div>
 
-      <div className="new-student__actions ">
-        <button type="button" onClick={clearData}>
-          Cancel
-        </button>
-        <button type="submit">Save</button>
-      </div>
       <div>{errorMessage}</div>
     </form>
   );

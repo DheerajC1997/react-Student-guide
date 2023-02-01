@@ -10,36 +10,43 @@ function StudentGender(props) {
   };
 
   return (
-    <div className="radio newstudentgender">
-      <label>
-        <input
-          type="radio"
-          value="Male"
-          onChange={assignGender}
-          checked={Gender === "Male"}
-        />
-        Male
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="Female"
-          onChange={assignGender}
-          checked={Gender === "Female"}
-        />
-        Female
-      </label>
-
-      <label>
-        <input
-          type="radio"
-          value="Other"
-          onChange={assignGender}
-          checked={Gender === "Other"}
-        />
-        Other
-      </label>
+    <div style={{ width: "45%" }} className="radio newstudentgender">
+      Gender
+      <ul style={{ "list-style-type": "none" }}>
+        <li>
+          <label>
+            <input
+              type="radio"
+              value="Male"
+              onChange={assignGender}
+              checked={Gender === "Male"}
+            />
+            Male
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="radio"
+              value="Female"
+              onChange={assignGender}
+              checked={Gender === "Female"}
+            />
+            Female
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="radio"
+              value="Other"
+              onChange={assignGender}
+              checked={Gender === "Other"}
+            />
+            Other
+          </label>
+        </li>
+      </ul>
     </div>
   );
 }

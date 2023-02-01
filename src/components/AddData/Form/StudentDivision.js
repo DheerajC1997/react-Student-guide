@@ -10,10 +10,14 @@ function StudentDivision(props) {
   };
 
   return (
-    <div>
+    <div style={{ width: "45%" }}>
       <div className="new-student__control">
         <label>Division</label>
-        <select value={division} onChange={assignDivision}>
+        <select
+          style={{ width: "45%", padding: "5px" }}
+          value={division}
+          onChange={assignDivision}
+        >
           <option value="">select</option>
           <option value="A">A</option>
           <option value="B">B</option>

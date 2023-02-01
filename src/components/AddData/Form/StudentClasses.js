@@ -9,10 +9,14 @@ function StudentClasses(props) {
   };
 
   return (
-    <div>
+    <div style={{ width: "45%" }}>
       <div className="new-student__control">
         <label>Class</label>
-        <select value={classes} onChange={assignClasses}>
+        <select
+          style={{ width: "45%", padding: "5px" }}
+          value={classes}
+          onChange={assignClasses}
+        >
           <option value="">select</option>
           <option value="I">I</option>
           <option value="II">II</option>
